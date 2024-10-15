@@ -2,7 +2,7 @@ import platform
 import sys
 from pathlib import Path
 
-import pkg_resources
+from importlib.metadata import parse_requirements
 from setuptools import find_packages, setup
 
 
@@ -30,7 +30,7 @@ setup(
     packages=find_packages(exclude=["tests*"]),
     install_requires=[
         str(r)
-        for r in pkg_resources.parse_requirements(
+        for r in parse_requirements(
             Path(__file__).with_name("requirements.txt").open()
         )
     ],
